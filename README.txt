@@ -1,3 +1,8 @@
+
+Repository URL : https://github.com/uol5/CM3070_SeizureDetection
+
+======================================================================================================================
+
 edf_to_numpy.ipynb -
 Purpose: Early version for extracting EEG data from EDF files into NumPy format.
 
