@@ -1,0 +1,8 @@
+numpy
+scipy
+matplotlib
+pywt
+scikit-learn
+tensorflow
+wfdb
+mne
