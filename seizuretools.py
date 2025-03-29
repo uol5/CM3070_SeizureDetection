@@ -2,17 +2,38 @@
 """
 seizuretools.py
 
-This module provides EEG preprocessing and model support tools for seizure detection using deep learning.
-It includes:
+This module provides EEG preprocessing, data extraction, model training, and prediction tools
+for seizure detection using deep learning.
 
+Included features:
+
+Preprocessing:
 - Bandpass filtering (1–20 Hz) to isolate clinically relevant brainwave frequencies
-- Normalization (z-score) to stabilize signal amplitude across recordings
-- Predefined ConvBLSTM neural network architecture for seizure prediction
-- Utility functions for model loading, input preparation, and evaluation
+- Z-score normalisation for amplitude scaling across EEG recordings
 
-Designed for ease of use by clinical practitioners or researchers working with scalp EEG data,
-especially from the CHB-MIT dataset or similarly structured data.
+Model Architecture:
+- ConvBLSTM: A predefined hybrid CNN–Bidirectional LSTM model for spatial-temporal seizure classification
+
+Training and Evaluation:
+- Model compilation, training with early stopping, and recall plotting
+- Performance evaluation with accuracy, recall, precision, and confusion matrix visualisation
+
+Data Handling (EDF):
+- EdfToNpy: Class for processing EDF files to extract seizure and non-seizure EEG segments
+- Sliding window segmentation and label assignment using .seizures annotation files
+- Data saving as NumPy arrays
+- EEG signal visualisation with labelled plot
+
+Prediction:
+- SeizurePredictor: Subclass of EdfToNpy to support:
+    - Batch or single-sample prediction from raw EEG segments
+    - Preprocessing (filtering, normalisation, reshaping) before inference
+    - Visual display of predicted seizure segments
+
+Designed for researchers and clinicians working with EEG data (e.g., CHB-MIT dataset)
+to streamline seizure detection workflows.
 """
+
 
 import os
 import re
@@ -47,6 +68,16 @@ def bandpass_filter(data, lowcut=1.0, highcut=20.0, fs=256.0, order=4):
     Returns:
         - filtered_data (np.ndarray): Bandpass-filtered EEG data with the same shape as input
     """
+    # --- Input validation ---
+    if not isinstance(data, np.ndarray):
+        raise TypeError("Input must be a NumPy array.")
+    if data.ndim != 3:
+        raise ValueError(f"Input array must be 3D (samples, channels, features), got shape {data.shape}.")
+    if lowcut >= highcut:
+        raise ValueError("Lowcut frequency must be less than highcut frequency.")
+    if fs <= 0:
+        raise ValueError("Sampling frequency must be positive.")
+
     # Nyquist frequency is maximum frequency reproducible without distortion
     nyquist = 0.5 * fs
     # butter works with frequency normalised between 0-1 of nyquist frequency
