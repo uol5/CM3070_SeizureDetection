@@ -12,7 +12,7 @@ Repository URL : https://github.com/uol5/CM3070_SeizureDetection
 | 10-second window 43% seizure | EdfToNumpy2.ipynb           | [https://physionet.org/content/chbmit/1.0.0/](https://physionet.org/content/chbmit/1.0.0/) | more_balanced_signals.npy    | more_balanced_labels.npy     |
 | 1-second window 21% seizure  | Kaggle website              | [https://www.kaggle.com/datasets/adibadea/chbmitseizuredataset](https://www.kaggle.com/datasets/adibadea/chbmitseizuredataset) | eeg-seizure_train.npz, eeg-seizure_test.npz, eeg-seizure_val.npz, eeg-seizure_val_balanced.npz | N/A                           |
 
-
+GitHub imposes 100MB file limit, and 1 GB large file size limit. I am not able to push dataset as a result.
 ======================================================================================================================
 
 edf_to_numpy.ipynb -
