@@ -19,10 +19,10 @@ Training and Evaluation:
 - Performance evaluation with accuracy, recall, precision, and confusion matrix visualisation
 
 Data Handling (EDF):
-- EdfToNpy: Class for processing EDF files to extract seizure and non-seizure EEG segments
-- Sliding window segmentation and label assignment using .seizures annotation files
-- Data saving as NumPy arrays
-- EEG signal visualisation with labelled plot
+- EdfToNpy: Class for processing EDF files to extract seizure and non-seizure EEG segments.
+- Sliding window segmentation and label assignment using .seizures annotation files.
+- Data saving as NumPy arrays.
+- EEG signal visualisation with labelled plot.
 
 Prediction:
 - SeizurePredictor: Subclass of EdfToNpy to support:

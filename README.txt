@@ -1,9 +1,23 @@
 
 Repository URL : https://github.com/uol5/CM3070_SeizureDetection
 
+
+=====================================================================================================================
+
+### All dataset files
+
+| **Seizure Window Stats**    | **Source File**            | **Input Source**                                           | **Output Data File**                                    | **Output Label File**         |
+|-----------------------------|-----------------------------|-----------------------------------------------------------|---------------------------------------------------------|-------------------------------|
+| 10-second window 27% seizure | edf_to_numpy.ipynb          | [https://physionet.org/content/chbmit/1.0.0/](https://physionet.org/content/chbmit/1.0.0/) | 10sec_signals.npy     | 10sec_labels.npy              |
+| 10-second window 43% seizure | EdfToNumpy2.ipynb           | [https://physionet.org/content/chbmit/1.0.0/](https://physionet.org/content/chbmit/1.0.0/) | more_balanced_signals.npy    | more_balanced_labels.npy     |
+| 1-second window 21% seizure  | Kaggle website              | [https://www.kaggle.com/datasets/adibadea/chbmitseizuredataset](https://www.kaggle.com/datasets/adibadea/chbmitseizuredataset) | eeg-seizure_train.npz, eeg-seizure_test.npz, eeg-seizure_val.npz, eeg-seizure_val_balanced.npz | N/A                           |
+
+
 ======================================================================================================================
 
 edf_to_numpy.ipynb -
+Converts raw EEG CHB-MIT dataset to  10sec_signals.npy , 10sec_labels.npy
+
 Purpose: Early version for extracting EEG data from EDF files into NumPy format.
 
 Features:
@@ -27,6 +41,8 @@ Not implemented in this version. Preprocessing is minimal.
 ----------------------------------------------------------------------------------------------------------------------
 
 EdfToNumpy2.ipynb -
+Converts raw EEG CHB-MIT dataset to  more_balanced_signals.npy , more_balanced_labels.npy
+
 Purpose: Updated version with improved preprocessing and seizure balancing.
 
 Features:
